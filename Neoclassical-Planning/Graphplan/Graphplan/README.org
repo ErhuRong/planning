@@ -1,0 +1,9 @@
+* Introduction
+  The functions usable wrapped from main are tested and documented
+* main
+** functions
+*** without arguments
+    + instrs
+      int inst(void)
+      list options of the planner
+    + 

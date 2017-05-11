@@ -461,9 +461,7 @@ void load_fct_file( char *filename );
 
 
 
-int main( int argc, char *argv[] ) {
-  return oldmain(argc, argc);
-}
+
 
 int oldmain( int argc, char *argv[] )
 
@@ -806,7 +804,9 @@ int oldmain( int argc, char *argv[] )
 
 }
 
-
+int main( int argc, char * argv[]) {
+  return oldmain(argc, argv);
+}
 
 
 
