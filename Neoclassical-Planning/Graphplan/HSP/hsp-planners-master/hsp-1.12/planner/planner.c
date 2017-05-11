@@ -1095,11 +1095,9 @@ _fatal( register int returnCode, register char *s, register char *file, register
   exit( returnCode );
 }
 
-
-int
-main( int argc, char **argv )
+int oldmain(int argc, char **argv ) 
 {
-  int rv;
+int rv;
   char *progname;
   long seed1;
   float totalTime;
@@ -1208,4 +1206,11 @@ main( int argc, char **argv )
   fprintf( stdout, "elapsed time = %.2fms\n", totalTime );
 
   return( noError );
+
+}
+
+
+int main( int argc, char **argv )
+{
+  return oldmain(argc, argv);
 }

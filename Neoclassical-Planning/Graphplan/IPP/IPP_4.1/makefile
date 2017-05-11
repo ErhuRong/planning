@@ -12,6 +12,8 @@ CFLAGS	= -O6 -Wall -ansi -fPIC
 
 LIBS    = -lm
 
+INC_PYTHON = -I/usr/include/python2.7
+
 ####### Files
 
 PDDL_PARSER_SRC	= scan-fct_pddl.tab.c \
@@ -43,8 +45,6 @@ SOURCES 	= main.c \
 
 OBJECTS 	= $(SOURCES:.c=.o)
 
-INC_PYTHON = -I/usr/include/python2.7
-
 ####### Implicit rules
 
 .SUFFIXES:
@@ -56,16 +56,16 @@ INC_PYTHON = -I/usr/include/python2.7
 ####### Build rules
 
 _ipp.so: $(OBJECTS) $(PDDL_PARSER_OBJ) ipp_wrap.o
-		gcc -shared -o $@ $^
+	gcc -shared -o $@ $^
+
+ipp_wrap.o: ipp_wrap.c
+	$(CC) -c $(INC_PYTHON) $^
+
+ipp.py ipp_wrap.c: ipp.i
+	swig -python ipp.i
 
 ipp: $(OBJECTS) $(PDDL_PARSER_OBJ)
 	$(CC) -o ipp $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
-
-ipp_wrap.o: ipp_wrap.c
-		$(CC) -c $(INC_PYTHON) $(FLAGS) $^
-
-ipp.py ipp_wrap.c: ipp.i
-		swig -python ipp.i
 
 # v4 with pddl syntax
 scan-fct_pddl.tab.c: scan-fct_pddl.y lex.fct_pddl.c
@@ -79,6 +79,7 @@ lex.fct_pddl.c: lex-fct_pddl.l
 
 lex.ops_pddl.c: lex-ops_pddl.l
 	flex -Pops_pddl lex-ops_pddl.l
+
 
 # misc
 clean:

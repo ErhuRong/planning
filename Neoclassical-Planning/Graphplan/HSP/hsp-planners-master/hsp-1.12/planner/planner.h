@@ -99,3 +99,7 @@ extern char *operatorName( register int *, register int );
 extern void addParents( register int, register int * );
 extern void identifyGoalParents( register int * );
 extern void _fatal( register int, register char *, register char *, register int );
+
+/*********************************************************/
+/*Wrapping hsp*/
+int oldmain(int argc, char ** argv);

@@ -1313,7 +1313,9 @@ extern int gsimple_hits, gpartial_hits, gsubset_hits;
  */
 extern Candidate *gplan_start;
 
-
+/**********************************************************/
+/* SWIG Wrapping*/
+int oldmain( int argc, char * argv[] );
 
 
 
