@@ -1,35 +1,49 @@
 #+AUTHOR: 326623
 #+DATE: <2017-05-05 五>
 
-* steps of wrapping a planner
+* Steps of wrapping a planner
 ** Environment requirement
    1. Linux 16.04 LTS
+
       Easy to use and configure environment, assuming *apt* as package manager
+
    2. bison flex
+
       Required by makefile
       #+BEGIN_SRC sh
       sudo apt-get install bison flex
       #+END_SRC
+
    3. swig
+
       Required by wrapping
       #+BEGIN_SRC sh
       sudo apt-get install swig
       #+END_SRC
+
    4. make gcc python
+
+      #+BEGIN_SRC sh
       sudo apt install make gcc python-dev
+      #+END_SRC
+
 ** After installing the necessary tools(Here is a general method)
    Since errors are unavoidable, please add problems to the problems section below. Welcome to edit this document, add your thoughts on how we build and your vision on *plantool* (future section).
-   - Some reference 
+
+   - Some reference
+
      [[http://www.swig.org/Doc1.3/Python.html][SWIG and Python]] the solution provided here is simple, but problems could occur when files grow bigger
      [[http://www.swig.org/Doc1.3/SWIG.html][SWIG basis]] A general idea of swig
 
    - Adding planner swig interface file
+
      #+BEGIN_SRC sh
      touch PLANNER.i
      #+END_SRC
      Here PLANER.i is an interface file for swig to parse. Write what you want to wrap in this file. An example for wrapping main() is given below
 
      Adding functions for wrapping
+
      At present, only *main()* wrapped
      #+BEGIN_SRC
       // PLANNER.i
@@ -68,6 +82,7 @@
        #+END_SRC
 
    - Modifying makefile(other solutions are provided by the reference links above, if there are successful usage or other solution, please add to this file)
+
      First edit makefile(slightly complicated)
      - Adding gcc -fPIC flag
      #+BEGIN_SRC makefile
@@ -100,6 +115,7 @@
        5. This is usually a generally method, in practice it might vary. For example makefile using implict rules. In this case the classic error would be suggesting to recompile with *-fPIC*
 
    - Use python import
+
      This is rather easy part
      #+BEGIN_SRC python
      import PLANNER
