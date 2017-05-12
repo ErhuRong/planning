@@ -1,0 +1,30 @@
+flex bbpddl.l
+bison -d bbpddl.y
+gcc -g2    -c -o bbpddl.tab.o bbpddl.tab.c
+gcc -g2    -c -o lex.yy.o lex.yy.c
+gcc -g2    -c -o graphplan.o graphplan.c
+gcc -g2    -c -o utilities.o utilities.c
+gcc -g2    -c -o hash.o hash.c
+gcc -g2    -c -o planner.o planner.c
+gcc -g2    -c -o dummy.o dummy.c
+gcc -g2    -c -o justify.o justify.c
+cd csp; make
+make[1]: Entering directory '/home/king-kong/my_github/planning/Neoclassical-Planning/CSP/gp_csp_ver1.1.2/csp'
+gcc  -O3 -Wall  -c -o check.o check.c
+gcc  -O3 -Wall  -c -o gp_csp.o gp_csp.c
+gcc  -O3 -Wall  -c -o process.o process.c
+gcc  -O3 -Wall  -c -o generate.o generate.c
+gcc  -O3 -Wall  -c -o hash.o hash.c
+make[1]: Leaving directory '/home/king-kong/my_github/planning/Neoclassical-Planning/CSP/gp_csp_ver1.1.2/csp'
+cd Share; make
+make[1]: Entering directory '/home/king-kong/my_github/planning/Neoclassical-Planning/CSP/gp_csp_ver1.1.2/Share'
+gcc  -I. -O3 -Wall  -c -o csp.o csp.c
+gcc  -I. -O3 -Wall  -c -o debug.o debug.c
+gcc  -I. -O3 -Wall  -c -o limit.o limit.c
+gcc  -I. -O3 -Wall  -c -o stack.o stack.c
+gcc  -I. -O3 -Wall  -c -o timer.o timer.c
+gcc  -I. -O3 -Wall  -c -o solve_GAC.o solve_GAC.c
+gcc  -I. -O3 -Wall  -c -o solve_GAC_CBJ.o solve_GAC_CBJ.c
+gcc  -I. -O3 -Wall  -c -o ebl.o ebl.c
+make[1]: Leaving directory '/home/king-kong/my_github/planning/Neoclassical-Planning/CSP/gp_csp_ver1.1.2/Share'
+gcc -g2 -Wall -ansi bbpddl.tab.o lex.yy.o graphplan.o utilities.o hash.o planner.o dummy.o justify.o -lfl csp/*.o Share/csp.o Share/debug.o Share/limit.o Share/stack.o Share/timer.o Share/solve_GAC_CBJ.o Share/ebl.o -o gpcsp 

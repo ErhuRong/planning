@@ -1,0 +1,108 @@
+UM Nonlin - Version 1.2.2 (11/92)
+
+README File (updated 3/22/95)
+
+Parallel Understanding Systems Group
+Department of Computer Science
+University of Maryland at College Park
+(c) 1992
+
+INTRODUCTION
+------------
+This directory contains the source files for a Common Lisp
+implementation of the Nonlin planning system originally designed and
+implemented by Austin Tate.  The implementation is relatively faithful
+to the methodology of the original Nonlin, although some name changes
+have been made within the operators to conform more closely to more
+recent usage in the planning community.  The brief manual provided
+(see below) describes these differences and reports on how to load and
+run the program.  We also provide some files with simple examples that
+are described in the document (useful for debugging and for learning
+to use the system).  The system has been tested in several Commonlisp
+implementations, but of course we cannot guarantee that it will work
+in all implementations.  Finally, we should note that an ability to
+make extensions to or to debug this code will require greater
+familiarity with Nonlin than is provided in the documentation
+provided.  The original conference papers and technical reports on
+Nonlin (cited in the documentation) are required reading for anyone
+wishing to hack this code.
+
+
+INSTALLATION
+------------
+To obtain the necessary files:
+
+1) FTP the files:
+
+  a) ftp cs.umd.edu (128.8.128.8) and login as anonymous
+  b) issue the following ftp commands:
+	cd /pub/nonlin
+	binary
+	get nonlin-files.tar.Z
+	get nonlin.ps.Z
+
+    Note: Those without the ability to ftp this code should contact 
+    Prof. Hendler (see address below) to make special arrangements.
+
+2)  Uncompress the files via "uncompress nonlin-files.tar.Z".
+
+3)  The source code files should be extracted from the file
+    "nonlin-files.tar" via "tar -xvf nonlin-files.tar".
+    This will install the files in a subdirectory named "Nonlin".
+
+4)  Edit the variables at the top of file load-nonlin.lisp
+
+[*** NOTE TO LUCID COMMON LISP USERS:
+     Use the file load-nonlin-lucid.lisp in place of load-nonlin.lisp
+     for the above step and for other steps indicated in the manual. 
+]
+
+The user manual describing the implementation and how to run UM Nonlin
+is contained in the file nonlin.ps, which should be uncompressed 
+before viewing or printing.
+
+The file nonlin-history.txt contains details about changes made to this
+and previous releases of UM Nonlin.
+
+SUPPORT
+-------
+This project is being distributed free of charge with no implied
+warranty or support.  To allow communication between users, we have
+set up some mailing lists which can be used for reporting bugs and
+getting reports of bug fixes.  Announcements of patches and updates
+will be made via these mailing lists.  We request that anyone ftp'ing
+this code send a message to "nonlin-users-request@cs.umd.edu" 
+(US internet) letting us know you have a copy, and also letting us
+know if you wish to subscribe to the list "nonlin-users@cs.umd.edu".
+Information, new examples, etc. are expected to be shared via the
+nonlin-users mailing list, so we would recommend subscribing.
+
+
+CONTACTS
+--------
+The following mailing lists have been set up for this implementation of
+of NONLIN:
+   nonlin-bugs@cs.umd.edu           (to report bugs in the implementation)
+   nonlin-users@cs.umd.edu          (users of this implementation)
+   nonlin-users-request@cs.umd.edu  (for requests from users)
+
+Reports of bugs found in the implementation, and we are sure there are
+some, can be sent to "nonlin-bugs@cs.umd.edu" which will be read by
+the implementors and others who are familiar with the source code.  If
+you wish to receive this mailing list, you may also send mail to
+"non-users-request@cs.umd.edu" although we ask that you be serious
+about participating.  The nonlin-users list will be used to report
+bugs found via this mailing list as well as fixes to those bugs.
+
+A page has been set up for UM Nonlin news on the Worldwide Web (WWW) 
+at URL http://www.cs.umd.edu/projects/plus/Nonlin/nonlin.html
+
+Correspondence can be addressed to
+   Prof. James Hendler
+   Department of Computer Science 
+   University of Maryland 
+   College Park, Md. 20742
+   hendler@cs.umd.edu (US internet)
+
+Happy Planning!
+

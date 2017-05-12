@@ -1,0 +1,8 @@
+#+AUTHOR:NewJoy
+Time-stamp: <2017-05-12 08:49:09 king-kong>
+
+* Introduction
+  I am now trying to use SWIG to use the C function in FF-v2.3 as python functions. Still in beta, but FF-v2.3 seems easy to wrap.
+
+** Process
+   Successfully wrapping ff.h into python.

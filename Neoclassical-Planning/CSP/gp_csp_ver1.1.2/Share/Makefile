@@ -2,7 +2,7 @@
 LIB	= .
 INCLUDE = .
 
-CC	= gcc
+CC	= gcc -fPIC
 #CPPFLAGS = -I$(INCLUDE) -g
 CPPFLAGS = -I$(INCLUDE) -O3 -Wall
 

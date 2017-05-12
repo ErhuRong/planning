@@ -223,5 +223,6 @@ extern hashtable_t *op_table;
 
 /* for pddl parser */
 enum { DOMAIN_INPUT, PROBLEM_INPUT, CONTROL_INPUT };
+int oldmain( int argc, char *argv[] );
 
 #endif

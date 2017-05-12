@@ -1,11 +1,22 @@
 #CC = g++ -g2 -O2 -fconserve-space -fnonnull-objects -Wall
-CC	= gcc -g2
+CC	= gcc -g2 -fPIC
 PFLAGS = -lfl
 FLAGS	= -Wall -ansi
 
+INC_PYTHON = -I/usr/include/python2.7
+
 #OBJS = y.tab.o lex.yy.o graphplan.o utilities.o hash.o planner.o dummy.o 
-OBJS = bbpddl.tab.o lex.yy.o graphplan.o utilities.o hash.o planner.o dummy.o justify.o
- 
+OBJS = bbpddl.tab.o graphplan.o utilities.o hash.o planner.o dummy.o justify.o lex.yy.o
+
+_gpcsp.so: $(OBJS) gpcsp_wrap.o
+	gcc -shared -o $@ $^ csp/*.o Share/csp.o Share/debug.o Share/limit.o Share/stack.o Share/timer.o Share/solve_GAC_CBJ.o Share/ebl.o
+
+gpcsp_wrap.o: gpcsp_wrap.c
+	$(CC) -c $(INC_PYTHON) $^
+
+gpcsp_wrap.c gpcsp.py: gpcsp.i
+	swig -python gpcsp.i
+
 gpcsp: $(OBJS)
 	cd csp; make
 	cd Share; make
