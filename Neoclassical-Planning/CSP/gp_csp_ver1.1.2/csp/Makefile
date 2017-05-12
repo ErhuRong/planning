@@ -2,7 +2,7 @@ LIB   = .
 INCLUDE = .
 SHARE = ../Share
 
-CC = gcc
+CC = gcc -fPIC
 #OPTFLAG = -O3
 #OPTFLAG = -O2 -fnonnull-objects -fconserve-space 
 #OPTFLAG = -g

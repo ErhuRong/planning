@@ -208,8 +208,12 @@ int instrs(void)
   return 0;
 }
 
+int main(int argc, char *argv[]) 
+{
+  return oldmain(argc, argv);
+}
 
-int main(int argc, char *argv[])
+int oldmain(int argc, char *argv[])
 {
   //BS:  op_list ops; // Made global now
   op_list op;

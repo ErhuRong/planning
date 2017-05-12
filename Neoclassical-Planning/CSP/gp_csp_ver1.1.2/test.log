@@ -1,0 +1,12 @@
+flex bbpddl.l
+bison -d bbpddl.y
+gcc -g2 -fPIC    -c -o bbpddl.tab.o bbpddl.tab.c
+gcc -g2 -fPIC    -c -o graphplan.o graphplan.c
+gcc -g2 -fPIC    -c -o utilities.o utilities.c
+gcc -g2 -fPIC    -c -o hash.o hash.c
+gcc -g2 -fPIC    -c -o planner.o planner.c
+gcc -g2 -fPIC    -c -o dummy.o dummy.c
+gcc -g2 -fPIC    -c -o justify.o justify.c
+gcc -g2 -fPIC    -c -o lex.yy.o lex.yy.c
+gcc -g2 -fPIC -c -Wall -ansi -I/usr/include/python2.7 gpcsp_wrap.c
+Makefile:15: recipe for target 'gpcsp_wrap.o' failed

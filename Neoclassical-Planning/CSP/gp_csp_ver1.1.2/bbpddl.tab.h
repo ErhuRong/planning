@@ -1,37 +1,104 @@
-typedef union {
+/* A Bison parser, made by GNU Bison 3.0.4.  */
+
+/* Bison interface for Yacc-like parsers in C
+
+   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
+
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+
+/* As a special exception, you may create a larger work that contains
+   part or all of the Bison parser skeleton and distribute that work
+   under terms of your choice, so long as that work isn't itself a
+   parser generator using the skeleton or a modified version thereof
+   as a parser skeleton.  Alternatively, if you modify or redistribute
+   the parser skeleton itself, you may (at your option) remove this
+   special exception, which will cause the skeleton and the resulting
+   Bison output files to be licensed under the GNU General Public
+   License without this special exception.
+
+   This special exception was added by the Free Software Foundation in
+   version 2.2 of Bison.  */
+
+#ifndef YY_YY_BBPDDL_TAB_H_INCLUDED
+# define YY_YY_BBPDDL_TAB_H_INCLUDED
+/* Debug traces.  */
+#ifndef YYDEBUG
+# define YYDEBUG 0
+#endif
+#if YYDEBUG
+extern int yydebug;
+#endif
+
+/* Token type.  */
+#ifndef YYTOKENTYPE
+# define YYTOKENTYPE
+  enum yytokentype
+  {
+    DEFINE = 258,
+    DOMAIN = 259,
+    REQUIREMENTS = 260,
+    CONSTANTS = 261,
+    TYPES = 262,
+    PREDICATES = 263,
+    PROBLEM = 264,
+    OBJECTS = 265,
+    INIT = 266,
+    LENGTH = 267,
+    PARALLEL = 268,
+    SERIAL = 269,
+    ACTION = 270,
+    PARAMETERS = 271,
+    PRECONDITION = 272,
+    EFFECT = 273,
+    AND = 274,
+    EXISTS = 275,
+    EQ = 276,
+    NOT = 277,
+    GOAL = 278,
+    EITHER = 279,
+    FLUENT = 280,
+    ID = 281,
+    VAR = 282,
+    SET = 283,
+    TEST = 284,
+    INFLUENCE = 285
+  };
+#endif
+
+/* Value type.  */
+#if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
+
+union YYSTYPE
+{
+#line 48 "bbpddl.y" /* yacc.c:1909  */
+
   char *str;
   op_list oplist;
   fact_list flist;
   token_list tlist;
-} YYSTYPE;
-#define	DEFINE	257
-#define	DOMAIN	258
-#define	REQUIREMENTS	259
-#define	CONSTANTS	260
-#define	TYPES	261
-#define	PREDICATES	262
-#define	PROBLEM	263
-#define	OBJECTS	264
-#define	INIT	265
-#define	LENGTH	266
-#define	PARALLEL	267
-#define	SERIAL	268
-#define	ACTION	269
-#define	PARAMETERS	270
-#define	PRECONDITION	271
-#define	EFFECT	272
-#define	AND	273
-#define	EXISTS	274
-#define	EQ	275
-#define	NOT	276
-#define	GOAL	277
-#define	EITHER	278
-#define	FLUENT	279
-#define	ID	280
-#define	VAR	281
-#define	SET	282
-#define	TEST	283
-#define	INFLUENCE	284
+
+#line 92 "bbpddl.tab.h" /* yacc.c:1909  */
+};
+
+typedef union YYSTYPE YYSTYPE;
+# define YYSTYPE_IS_TRIVIAL 1
+# define YYSTYPE_IS_DECLARED 1
+#endif
 
 
 extern YYSTYPE yylval;
+
+int yyparse (void);
+
+#endif /* !YY_YY_BBPDDL_TAB_H_INCLUDED  */

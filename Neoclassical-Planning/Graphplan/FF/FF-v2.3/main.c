@@ -720,7 +720,8 @@ int oldmain( int argc, char *argv[] )
   output_planner_info();
 
   printf("\n\n");
-  exit( 0 );
+  //  exit( 0 );
+  return 0;
 
 }
 
@@ -766,9 +767,9 @@ void output_planner_info( void )
   printf( "\n            %7.2f seconds total time", 
 	  gtempl_time + greach_time + grelev_time + gconn_time + gsearch_time );
 
-  printf("\n\n");
+  //  printf("\n\n");
 
-  exit( 0 );
+  //  exit( 0 );
 
   print_official_result();
 

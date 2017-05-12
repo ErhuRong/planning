@@ -2,34 +2,55 @@
 #+DATE: <2017-05-05 五>
 
 * steps of wrapping a planner
-  1. Adding planner swig interface file
-     #+BEGIN_SRC sh
-     touch PLANNER.i
-     #+END_SRC
+** Environment requirement
+   1. Linux 16.04 LTS
+      Easy to use and configure environment, assuming *apt* as package manager
+   2. bison flex
+      Required by makefile
+      #+BEGIN_SRC sh
+      sudo apt-get install bison flex
+      #+END_SRC
+   3. swig
+      Required by wrapping
+      #+BEGIN_SRC sh
+      sudo apt-get install swig
+      #+END_SRC
+   4. make gcc python
+* After installing the necessary tools(A general method)
+  Since errors are unavoidable, please add problems to the problem section below. Welcome to edit this document, add your thoughts on how we build and your vision on plantool.
+  - Some reference 
+    [[http://www.swig.org/Doc1.3/Python.html][SWIG and Python]] the solution provided here is simple, but problems could occur
+    [[http://www.swig.org/Doc1.3/SWIG.html][SWIG basis]] A general idea of swig
+
+
+  - Adding planner swig interface file
+    #+BEGIN_SRC sh
+    touch PLANNER.i
+    #+END_SRC
+    Here PLANER.i is an interface file for swig to parse. Write what you want to wrap in this file. An example for wrapping main() is given below
+
 
      Adding functions for wrapping
      At present, only *main()* wrapped
-     #+BEGIN_SRC swig interface
+     #+BEGIN_SRC
+     // PLANNER.i
      %module PLANNER
 
      %include <argcargv.i>
 
      %{
-     #include "PLANNER.h"
+     #include "PLANNER.h" // The header where functions are declared
      %}
 
      %apply (int ARGC, char **ARGV) { (int argc, char *argv[]) }
 
-     int oldmain( int argc, char *argv[] );
-
-     int main(int argc, char *argv[]) {
-       return oldmain(argc, argv);
-     }
+     int oldmain( int argc, char *argv[] ); // The function we want to wrap
      #+END_SRC
 
-  2. Editing PLANNER.h(where swig interface wrap) and main.c(where the main() are defined)
+  2. Editing PLANNER.h(where swig interface wrap) and PLANNER.c(where the main() are defined)
      - Adding oldmain() declaration in PLANNER.h
        #+BEGIN_SRC c
+       // Somewhere in PLANNER.h
        /**********************************************************/
        /* SWIG Wrapping*/
        int oldmain( int argc, char * argv[] );
@@ -37,13 +58,17 @@
 
      - Adding oldmain() in main.c and modified it to have the same source code as main()
        #+BEGIN_SRC c
+       // PLANNER.c (Generally where main is located)
        int oldmain( int argc, char * argv[] ) {
-          //  Source code of main()
+          //  Source code of main() copied here
           //  ...
+       }
+       int main(int argc, char *argv[]) {
+          return oldmain(argc, argv);
        }
        #+END_SRC
 
-  3. Modifying makefile
+  3. Modifying makefile(other solutions are provided by the reference links above, if there are successful usage or other solution, please add to this file)
      - Adding gcc -fPIC flag
      #+BEGIN_SRC makefile
      -fPIC
